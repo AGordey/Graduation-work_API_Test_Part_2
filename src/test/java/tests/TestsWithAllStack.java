@@ -1,9 +1,7 @@
 package tests;
 
 import io.qameta.allure.restassured.AllureRestAssured;
-import io.restassured.RestAssured;
 import lombok.UserData;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -19,11 +17,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TestsWithAllStack extends Endpoints {
 
-//    @BeforeAll
-//    static void setUp() {
-//        RestAssured.baseURI = "https://reqres.in/api/";
-//    }
-
     @Test
     @DisplayName("Проверка информации юзера средствами Rest Assured")
     void checkSingleUser() {
@@ -31,7 +24,7 @@ public class TestsWithAllStack extends Endpoints {
         given()
                 .when()
                 .baseUri("https://reqres.in/api/")
-                .get(GETSingleUser)
+                .get(SingleUser)
                 .then()
                 .log().body()
                 .statusCode(200)
@@ -47,7 +40,7 @@ public class TestsWithAllStack extends Endpoints {
 
         requestSpecsForGET
                 .when()
-                .get(GETSingleUser)
+                .get(SingleUser)
                 .then()
                 .spec(response200)
                 .log().body()
@@ -64,7 +57,7 @@ public class TestsWithAllStack extends Endpoints {
         UserData data = given()
                 .baseUri("https://reqres.in/api/")
                 .when()
-                .get(GETSingleUser)
+                .get(SingleUser)
                 .then()
                 .log().body()
                 .extract().as(UserData.class);
@@ -81,7 +74,7 @@ public class TestsWithAllStack extends Endpoints {
 
         UserData data = requestSpecsForGET
                 .when()
-                .get(GETSingleUser)
+                .get(SingleUser)
                 .then()
                 .spec(response200)
                 .log().body()
@@ -100,7 +93,7 @@ public class TestsWithAllStack extends Endpoints {
         UserData data = requestSpecsForGET
                 .filter(new AllureRestAssured())
                 .when()
-                .get(GETSingleUser)
+                .get(SingleUser)
                 .then()
                 .spec(response200)
                 .log().body()
@@ -119,7 +112,7 @@ public class TestsWithAllStack extends Endpoints {
         UserData data = requestSpecsForGET
                 .filter(withCustomTemplates())
                 .when()
-                .get(GETSingleUser)
+                .get(SingleUser)
                 .then()
                 .spec(response200)
                 .log().body()
@@ -138,7 +131,7 @@ public class TestsWithAllStack extends Endpoints {
         requestSpecsForGET
                 .when()
                 .filter(withCustomTemplates())
-                .get(GETListUser)
+                .get(ListUser)
                 .then()
                 .spec(response200)
                 .log().body()
