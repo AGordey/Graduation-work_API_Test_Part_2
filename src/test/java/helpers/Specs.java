@@ -8,13 +8,26 @@ import io.restassured.specification.ResponseSpecification;
 import static io.restassured.RestAssured.with;
 
 public class Specs {
-    public static RequestSpecification requestSpec = with()
+    public static RequestSpecification requestSpecsForGET = with()
+            .baseUri("https://reqres.in")
+            .basePath("/api")
+            .log().uri();
+
+    public static RequestSpecification requestSpecsForPOST = with()
             .baseUri("https://reqres.in")
             .basePath("/api")
             .log().all()
             .contentType(ContentType.JSON);
 
-    public static ResponseSpecification responseSpec = new ResponseSpecBuilder()
+    public static ResponseSpecification response200 = new ResponseSpecBuilder()
             .expectStatusCode(200)
             .build();
+
+//    public static ResponseSpecification response200 = new ResponseSpecBuilder()
+//            .expectStatusCode(200)
+//            .build();
+//
+//    public static ResponseSpecification response200 = new ResponseSpecBuilder()
+//            .expectStatusCode(200)
+//            .build();
 }
