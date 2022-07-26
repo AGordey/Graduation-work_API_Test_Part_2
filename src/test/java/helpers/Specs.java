@@ -15,6 +15,6 @@ public class Specs {
             .contentType(ContentType.JSON);
 
     public static ResponseSpecification responseSpec = new ResponseSpecBuilder()
-            .expectStatusCode(201)
+            .expectStatusCode(200)
             .build();
 }
