@@ -17,7 +17,7 @@ public class TestsWithOtherMethods extends Endpoints {
     String BodyMain = "{ \"name\": \"morpheus\", \"job\": \"zion resident\" }";
 
     @Test
-    @DisplayName("Проверка создания пользователя с методом POST")
+    @DisplayName("Проверка создания юзера с методом POST")
     void checkCreateUserPOSTMethod() {
         String body = "{ \"email\": \"eve.holt@reqres.in\", \"password\": \"pistol\" }";
 
@@ -34,7 +34,7 @@ public class TestsWithOtherMethods extends Endpoints {
     }
 
     @Test
-    @DisplayName("Проверка обновления пользователяс методом PUT")
+    @DisplayName("Проверка обновления юзера с методом PUT")
     void checkUpdateUserWithPUT() {
 
         Morfeus morfeus = requestSpecsForPOST
@@ -54,7 +54,7 @@ public class TestsWithOtherMethods extends Endpoints {
     }
 
     @Test
-    @DisplayName("Проверка обновления пользователяс методом PUT")
+    @DisplayName("Проверка обновления юзера с методом PATCH")
     void checkUpdateUserWithPATCH() {
 
         Morfeus morfeus = requestSpecsForPOST
@@ -74,7 +74,7 @@ public class TestsWithOtherMethods extends Endpoints {
     }
 
     @Test
-    @DisplayName("Проверка удаления пользователя с методом DELETE")
+    @DisplayName("Проверка удаления юзера с методом DELETE")
     void checkDeleteUserWithDELETE() {
 
         requestSpecsForPOST

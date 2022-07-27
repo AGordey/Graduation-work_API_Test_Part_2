@@ -1,5 +1,5 @@
 # Автоматизации тестирования API https://reqres.in/
-## :link: <a target="_blank" href="https://reqres.in/">https://reqres.in/ - тестовый веб ресурс</a>
+## :link: <a target="_blank" href="https://reqres.in/">https://reqres.in/ </a> - тестовый веб ресурс
 
 ## :page_with_curl: Содержание:
 
@@ -23,13 +23,21 @@
 </p>
 
 ## :clipboard: Реализованные проверки
-- Проверка создание юзера :heavy_check_mark:
-- Проверка обновления данных юзера :heavy_check_mark:
+- Проверка  информации юзера с помощью :heavy_check_mark:
+  - Rest  Assured
+  - lombok
+  - specification
+  - groovy
+  - Allure Filter 
+- Проверка создания юзера методом POST:heavy_check_mark:
+- Проверка обновления юзера методом PUT:heavy_check_mark:
+- Проверка обновления юзера методом PATCH:heavy_check_mark:
+- Проверка удаления юзера методом DELETE:heavy_check_mark:
 
 ## :robot: Сборка в Jenkins
-### <a target="_blank" href="  ">Cборка в Jenkins</a>
+### <a target="_blank" href="https://jenkins.autotests.cloud/job/C12-Andrei_Gordey-Diplom-API/">Cборка в Jenkins</a>
 <p align="center">
-<img title="Jenkins Dashboard" src="images/screenshots/jenkins-dashboard.png">
+<img title="Jenkins Dashboard" src="images/screenshots/Jenkins main page.png">
 </p>
 
 ## :keyboard: Запуск из терминала
@@ -45,10 +53,10 @@ clean test
 ## :bar_chart: Allure отчет
 - ### Главный экран отчета
 <p align="center">
-<img title="Allure Overview Dashboard" src="images/screenshots/allure-main-page.png">
+<img title="Allure Overview Dashboard" src="images/screenshots/Allure main page.png">
 </p>
 
 - ### Страница с проведенными тестами
 <p align="center">
-<img title="Allure Test Page" src="images/screenshots/allure-test-page.png">
+<img title="Allure Test Page" src="images/screenshots/AllureTestCasePage.png">
 </p>
