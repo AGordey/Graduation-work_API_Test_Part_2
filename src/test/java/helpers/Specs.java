@@ -26,8 +26,5 @@ public class Specs {
     public static ResponseSpecification response204 = new ResponseSpecBuilder()
             .expectStatusCode(204)
             .build();
-//
-//    public static ResponseSpecification response200 = new ResponseSpecBuilder()
-//            .expectStatusCode(200)
-//            .build();
+
 }
