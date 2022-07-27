@@ -70,7 +70,6 @@ public class TestsWithOtherMethods extends Endpoints {
         assertEquals("morpheus", morfeus.getName());
         assertEquals("zion resident", morfeus.getJob());
         assertNotNull(morfeus.getUpdatedAt());
-
     }
 
     @Test
