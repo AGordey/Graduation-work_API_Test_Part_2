@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import static helpers.AllureRestAssuredFilter.withCustomTemplates;
 import static helpers.Specs.*;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -49,6 +50,8 @@ public class TestsWithOtherMethods extends Endpoints {
         assertEquals("morpheus", morfeus.getName());
         assertEquals("zion resident", morfeus.getJob());
         assertNotNull(morfeus.getUpdatedAt());
+//        assertThat(morfeus.getUpdatedAt(), is(notNullValue()));
+
 
     }
 
