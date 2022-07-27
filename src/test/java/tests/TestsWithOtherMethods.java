@@ -1,20 +1,20 @@
 package tests;
 
 import lombok.Morfeus;
-import lombok.MorfeusData;
-import lombok.NonNull;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static helpers.AllureRestAssuredFilter.withCustomTemplates;
 import static helpers.Specs.*;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 
 public class TestsWithOtherMethods extends Endpoints {
+
+    String BodyMain = "{ \"name\": \"morpheus\", \"job\": \"zion resident\" }";
 
     @Test
     @DisplayName("Проверка создания пользователя с методом POST")
@@ -34,7 +34,7 @@ public class TestsWithOtherMethods extends Endpoints {
     }
 
     @Test
-    @DisplayName("Проверка с методом PUT")
+    @DisplayName("Проверка обновления пользователяс методом PUT")
     void checkUpdateUserWithPUT() {
 
         Morfeus morfeus = requestSpecsForPOST
@@ -51,8 +51,38 @@ public class TestsWithOtherMethods extends Endpoints {
         assertEquals("zion resident", morfeus.getJob());
         assertNotNull(morfeus.getUpdatedAt());
 //        assertThat(morfeus.getUpdatedAt(), is(notNullValue()));
+    }
 
+    @Test
+    @DisplayName("Проверка обновления пользователяс методом PUT")
+    void checkUpdateUserWithPATCH() {
 
+        Morfeus morfeus = requestSpecsForPOST
+                .when()
+                .filter(withCustomTemplates())
+                .body(BodyMain)
+                .patch(SingleUser)
+                .then()
+                .spec(response200)
+                .log().body()
+                .extract().as(Morfeus.class);
+
+        assertEquals("morpheus", morfeus.getName());
+        assertEquals("zion resident", morfeus.getJob());
+        assertNotNull(morfeus.getUpdatedAt());
+
+    }
+
+    @Test
+    @DisplayName("Проверка удаления пользователя с методом DELETE")
+    void checkDeleteUserWithDELETE() {
+
+        requestSpecsForPOST
+                .when()
+                .filter(withCustomTemplates())
+                .delete(SingleUser)
+                .then()
+                .spec(response204);
     }
 
 }
