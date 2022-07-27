@@ -6,10 +6,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Morfeus {
-    @JsonProperty("name")
+//    @JsonProperty("name")
     private String name;
-    @JsonProperty("job")
+//    @JsonProperty("job")
     private String job;
-    @JsonProperty("updatedAt")
+//    @JsonProperty("updatedAt")
     private String updatedAt;
 }
