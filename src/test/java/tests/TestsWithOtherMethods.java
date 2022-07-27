@@ -1,6 +1,8 @@
 package tests;
 
+import lombok.Morfeus;
 import lombok.MorfeusData;
+import lombok.NonNull;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -8,6 +10,7 @@ import static helpers.AllureRestAssuredFilter.withCustomTemplates;
 import static helpers.Specs.*;
 import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 
 public class TestsWithOtherMethods extends Endpoints {
@@ -33,7 +36,7 @@ public class TestsWithOtherMethods extends Endpoints {
     @DisplayName("Проверка с методом PUT")
     void checkUpdateUserWithPUT() {
 
-        MorfeusData morfeus = requestSpecsForPOST
+        Morfeus morfeus = requestSpecsForPOST
                 .when()
                 .filter(withCustomTemplates())
                 .body(BodyMain)
@@ -41,11 +44,11 @@ public class TestsWithOtherMethods extends Endpoints {
                 .then()
                 .spec(response200)
                 .log().body()
-                .extract().as(MorfeusData.class);
+                .extract().as(Morfeus.class);
 
-        assertEquals("morpheus", morfeus.getMorfeus().getName());
-        assertEquals("zion resident", morfeus.getMorfeus().getJob());
-        assertEquals(notNullValue(), morfeus.getMorfeus().getUpdatedAt());
+        assertEquals("morpheus", morfeus.getName());
+        assertEquals("zion resident", morfeus.getJob());
+        assertNotNull(morfeus.getUpdatedAt());
 
     }
 
