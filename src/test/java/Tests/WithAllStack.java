@@ -5,9 +5,9 @@ import Models.ForCheckUserData;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static helpers.AllureRestAssuredFilter.withCustomTemplates;
-import static helpers.Specs.requestSpecsForGet;
-import static helpers.Specs.response200;
+import static Helpers.AllureRestAssuredFilter.withCustomTemplates;
+import static Helpers.Specs.requestSpecsForGet;
+import static Helpers.Specs.response200;
 import static io.restassured.RestAssured.given;
 
 import static org.hamcrest.Matchers.hasItem;
