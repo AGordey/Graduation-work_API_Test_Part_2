@@ -1,13 +1,13 @@
-package Tests;
+package tests;
 
-import Models.MorfeusAnswer;
-import Models.MorfeusBody;
-import Models.UserWithEmailAndPassword;
+import models.MorfeusAnswer;
+import models.MorfeusBody;
+import models.UserWithEmailAndPassword;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static Helpers.AllureRestAssuredFilter.withCustomTemplates;
-import static Helpers.Specs.*;
+import static helpers.AllureRestAssuredFilter.withCustomTemplates;
+import static helpers.Specs.*;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
