@@ -6,8 +6,9 @@ import lombok.Data;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class User {
-    private Integer id;
+public class ForCheckUser {
+
+    private Long id;
     private String email;
     @JsonProperty("first_name")
     private String firstName;

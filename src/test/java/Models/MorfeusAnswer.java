@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Morfeus {
+public class MorfeusAnswer {
     private String name;
     private String job;
     private String updatedAt;
