@@ -10,6 +10,7 @@ version '1.0-SNAPSHOT'
 repositories {
     mavenCentral()
 }
+
 def allureVersion = '2.18.1',
     restAssured = '5.1.1',
     junitJupiter = '5.8.2',
