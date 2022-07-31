@@ -1,6 +1,8 @@
-package tests;
+package Tests;
 
-import Models.Morfeus;
+import Models.MorfeusAnswer;
+import Models.MorfeusBody;
+import Models.UserWithEmailAndPassword;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -12,21 +14,23 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 
-public class TestsWithOtherMethods extends Endpoints {
+public class WithOtherMethods extends Endpoints {
 
-    String BodyMain = "{ \"name\": \"morpheus\", \"job\": \"zion resident\" }";
+    //    String morfeus = "{ \"name\": \"morpheus\", \"job\": \"zion resident\" }";
+    MorfeusBody morfeus = new MorfeusBody("morpheus", "zion resident");
 
     @Test
     @DisplayName("Проверка создания юзера с методом POST")
     void checkCreateUserPOSTMethod() {
-        String body = "{ \"email\": \"eve.holt@reqres.in\", \"password\": \"pistol\" }";
+//        String user2 = "{ \"email\": \"\", \"password\": \"pistol\" }";
+        UserWithEmailAndPassword userBodyEmailAndPassword = new UserWithEmailAndPassword("eve.holt@reqres.in", "pistol");
 
         requestSpecsForPost
                 .log().uri()
                 .when()
                 .filter(withCustomTemplates())
-                .body(body)
-                .post(RegisterUser)
+                .body(userBodyEmailAndPassword)
+                .post(registerUser)
                 .then()
                 .spec(response200)
                 .body("id", is(4))
@@ -37,15 +41,15 @@ public class TestsWithOtherMethods extends Endpoints {
     @DisplayName("Проверка обновления юзера с методом PUT")
     void checkUpdateUserWithPUT() {
 
-        Morfeus morfeus = requestSpecsForPost
+        MorfeusAnswer morfeus = requestSpecsForPost
                 .when()
                 .filter(withCustomTemplates())
-                .body(BodyMain)
-                .put(SingleUser)
+                .body(this.morfeus)
+                .put(singleUser)
                 .then()
                 .spec(response200)
                 .log().body()
-                .extract().as(Morfeus.class);
+                .extract().as(MorfeusAnswer.class);
 
         assertEquals("morpheus", morfeus.getName());
         assertEquals("zion resident", morfeus.getJob());
@@ -57,15 +61,15 @@ public class TestsWithOtherMethods extends Endpoints {
     @DisplayName("Проверка обновления юзера с методом PATCH")
     void checkUpdateUserWithPATCH() {
 
-        Morfeus morfeus = requestSpecsForPost
+        MorfeusAnswer morfeus = requestSpecsForPost
                 .when()
                 .filter(withCustomTemplates())
-                .body(BodyMain)
-                .patch(SingleUser)
+                .body(this.morfeus)
+                .patch(singleUser)
                 .then()
                 .spec(response200)
                 .log().body()
-                .extract().as(Morfeus.class);
+                .extract().as(MorfeusAnswer.class);
 
         assertEquals("morpheus", morfeus.getName());
         assertEquals("zion resident", morfeus.getJob());
@@ -79,7 +83,7 @@ public class TestsWithOtherMethods extends Endpoints {
         requestSpecsForPost
                 .when()
                 .filter(withCustomTemplates())
-                .delete(SingleUser)
+                .delete(singleUser)
                 .then()
                 .spec(response204);
     }

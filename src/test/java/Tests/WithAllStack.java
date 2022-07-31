@@ -1,7 +1,7 @@
-package tests;
+package Tests;
 
 import io.qameta.allure.restassured.AllureRestAssured;
-import Models.UserData;
+import Models.ForCheckUserData;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -15,7 +15,7 @@ import static org.hamcrest.Matchers.is;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
-public class TestsWithAllStack extends Endpoints {
+public class WithAllStack extends Endpoints {
 
     @Test
     @DisplayName("Проверка информации юзера средствами Rest Assured")
@@ -24,7 +24,7 @@ public class TestsWithAllStack extends Endpoints {
         given()
                 .when()
                 .baseUri("https://reqres.in/api/")
-                .get(SingleUser)
+                .get(singleUser)
                 .then()
                 .log().body()
                 .statusCode(200)
@@ -40,7 +40,7 @@ public class TestsWithAllStack extends Endpoints {
 
         requestSpecsForGet
                 .when()
-                .get(SingleUser)
+                .get(singleUser)
                 .then()
                 .spec(response200)
                 .log().body()
@@ -54,13 +54,13 @@ public class TestsWithAllStack extends Endpoints {
     @DisplayName("Проверка информации юзера Rest Assured + lombok")
     void checkSingleUserWithLombok() {
 
-        UserData data = given()
+        ForCheckUserData data = given()
                 .baseUri("https://reqres.in/api/")
                 .when()
-                .get(SingleUser)
+                .get(singleUser)
                 .then()
                 .log().body()
-                .extract().as(UserData.class);
+                .extract().as(ForCheckUserData.class);
 
         assertEquals(2, data.getUser().getId());
         assertEquals("janet.weaver@reqres.in", data.getUser().getEmail());
@@ -72,13 +72,13 @@ public class TestsWithAllStack extends Endpoints {
     @DisplayName("Проверка информации юзера Rest Assured + lombok + спецификации")
     void checkSingleUserWithLombokAndSpecification() {
 
-        UserData data = requestSpecsForGet
+        ForCheckUserData data = requestSpecsForGet
                 .when()
-                .get(SingleUser)
+                .get(singleUser)
                 .then()
                 .spec(response200)
                 .log().body()
-                .extract().as(UserData.class);
+                .extract().as(ForCheckUserData.class);
 
         assertEquals(2, data.getUser().getId());
         assertEquals("janet.weaver@reqres.in", data.getUser().getEmail());
@@ -90,14 +90,14 @@ public class TestsWithAllStack extends Endpoints {
     @DisplayName("Проверка информации юзера Rest Assured + lombok + спецификации + Allure Filter")
     void checkSingleUserWithLombokAndSpecificationAndAllureFilter() {
 
-        UserData data = requestSpecsForGet
+        ForCheckUserData data = requestSpecsForGet
                 .filter(new AllureRestAssured())
                 .when()
-                .get(SingleUser)
+                .get(singleUser)
                 .then()
                 .spec(response200)
                 .log().body()
-                .extract().as(UserData.class);
+                .extract().as(ForCheckUserData.class);
 
         assertEquals(2, data.getUser().getId());
         assertEquals("janet.weaver@reqres.in", data.getUser().getEmail());
@@ -109,14 +109,14 @@ public class TestsWithAllStack extends Endpoints {
     @DisplayName("Проверка информации юзера Rest Assured + lombok + спецификации + Allure Filter Custom")
     void checkSingleUserWithLombokAndSpecificationAndAllureFilterCustom() {
 
-        UserData data = requestSpecsForGet
+        ForCheckUserData data = requestSpecsForGet
                 .filter(withCustomTemplates())
                 .when()
-                .get(SingleUser)
+                .get(singleUser)
                 .then()
                 .spec(response200)
                 .log().body()
-                .extract().as(UserData.class);
+                .extract().as(ForCheckUserData.class);
 
         assertEquals(2, data.getUser().getId());
         assertEquals("janet.weaver@reqres.in", data.getUser().getEmail());
@@ -131,7 +131,7 @@ public class TestsWithAllStack extends Endpoints {
         requestSpecsForGet
                 .when()
                 .filter(withCustomTemplates())
-                .get(ListUser)
+                .get(listUser)
                 .then()
                 .spec(response200)
                 .log().body()
