@@ -8,12 +8,12 @@ import io.restassured.specification.ResponseSpecification;
 import static io.restassured.RestAssured.with;
 
 public class Specs {
-    public static RequestSpecification requestSpecsForGET = with()
+    public static RequestSpecification requestSpecsForGet = with()
             .baseUri("https://reqres.in")
             .basePath("/api")
             .log().uri();
 
-    public static RequestSpecification requestSpecsForPOST = with()
+    public static RequestSpecification requestSpecsForPost = with()
             .baseUri("https://reqres.in")
             .basePath("/api")
             .log().all()

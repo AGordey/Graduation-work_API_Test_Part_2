@@ -1,12 +1,12 @@
 package tests;
 
 import io.qameta.allure.restassured.AllureRestAssured;
-import lombok.UserData;
+import Models.UserData;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static helpers.AllureRestAssuredFilter.withCustomTemplates;
-import static helpers.Specs.requestSpecsForGET;
+import static helpers.Specs.requestSpecsForGet;
 import static helpers.Specs.response200;
 import static io.restassured.RestAssured.given;
 
@@ -38,7 +38,7 @@ public class TestsWithAllStack extends Endpoints {
     @DisplayName("Проверка информации юзера средствами Rest Assured + спецификации")
     void checkSingleUserWithSpec() {
 
-        requestSpecsForGET
+        requestSpecsForGet
                 .when()
                 .get(SingleUser)
                 .then()
@@ -72,7 +72,7 @@ public class TestsWithAllStack extends Endpoints {
     @DisplayName("Проверка информации юзера Rest Assured + lombok + спецификации")
     void checkSingleUserWithLombokAndSpecification() {
 
-        UserData data = requestSpecsForGET
+        UserData data = requestSpecsForGet
                 .when()
                 .get(SingleUser)
                 .then()
@@ -90,7 +90,7 @@ public class TestsWithAllStack extends Endpoints {
     @DisplayName("Проверка информации юзера Rest Assured + lombok + спецификации + Allure Filter")
     void checkSingleUserWithLombokAndSpecificationAndAllureFilter() {
 
-        UserData data = requestSpecsForGET
+        UserData data = requestSpecsForGet
                 .filter(new AllureRestAssured())
                 .when()
                 .get(SingleUser)
@@ -109,7 +109,7 @@ public class TestsWithAllStack extends Endpoints {
     @DisplayName("Проверка информации юзера Rest Assured + lombok + спецификации + Allure Filter Custom")
     void checkSingleUserWithLombokAndSpecificationAndAllureFilterCustom() {
 
-        UserData data = requestSpecsForGET
+        UserData data = requestSpecsForGet
                 .filter(withCustomTemplates())
                 .when()
                 .get(SingleUser)
@@ -128,7 +128,7 @@ public class TestsWithAllStack extends Endpoints {
     @DisplayName("Проверка информации юзера Rest Assured + спецификации + Allure Filter Custom + Groovy")
     void checkApiEndpoint2() {
 
-        requestSpecsForGET
+        requestSpecsForGet
                 .when()
                 .filter(withCustomTemplates())
                 .get(ListUser)

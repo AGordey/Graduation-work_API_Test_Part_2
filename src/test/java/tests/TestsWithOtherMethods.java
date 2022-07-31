@@ -1,6 +1,6 @@
 package tests;
 
-import lombok.Morfeus;
+import Models.Morfeus;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -21,7 +21,7 @@ public class TestsWithOtherMethods extends Endpoints {
     void checkCreateUserPOSTMethod() {
         String body = "{ \"email\": \"eve.holt@reqres.in\", \"password\": \"pistol\" }";
 
-        requestSpecsForPOST
+        requestSpecsForPost
                 .log().uri()
                 .when()
                 .filter(withCustomTemplates())
@@ -37,7 +37,7 @@ public class TestsWithOtherMethods extends Endpoints {
     @DisplayName("Проверка обновления юзера с методом PUT")
     void checkUpdateUserWithPUT() {
 
-        Morfeus morfeus = requestSpecsForPOST
+        Morfeus morfeus = requestSpecsForPost
                 .when()
                 .filter(withCustomTemplates())
                 .body(BodyMain)
@@ -57,7 +57,7 @@ public class TestsWithOtherMethods extends Endpoints {
     @DisplayName("Проверка обновления юзера с методом PATCH")
     void checkUpdateUserWithPATCH() {
 
-        Morfeus morfeus = requestSpecsForPOST
+        Morfeus morfeus = requestSpecsForPost
                 .when()
                 .filter(withCustomTemplates())
                 .body(BodyMain)
@@ -76,7 +76,7 @@ public class TestsWithOtherMethods extends Endpoints {
     @DisplayName("Проверка удаления юзера с методом DELETE")
     void checkDeleteUserWithDELETE() {
 
-        requestSpecsForPOST
+        requestSpecsForPost
                 .when()
                 .filter(withCustomTemplates())
                 .delete(SingleUser)
